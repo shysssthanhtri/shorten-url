@@ -12,6 +12,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "export NODE_ENV=production; node dist/main",
+    "start:local-env": "docker compose -f ./docker/docker-compose.yml up",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "export NODE_ENV=test-local; jest --config ./test/jest.json",
     "test:watch": "export NODE_ENV=test-local; jest --config ./test/jest.json --watch",
