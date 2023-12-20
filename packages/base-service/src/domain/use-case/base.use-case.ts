@@ -1,5 +1,5 @@
-import { BaseRequestDto } from '@/domain/use-case/base.request-dto';
-import { BaseResponseDto } from '@/domain/use-case/base.response-dto';
+import { BaseRequestDto } from './base.request-dto';
+import { BaseResponseDto } from './base.response-dto';
 
 export abstract class BaseUseCase<
   RequestDto extends BaseRequestDto,

@@ -1,12 +1,14 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger';
 import { BaseEntity } from '@shorten-url/base-service';
-import { Entity } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
 @Entity('url')
 export class UrlEntity extends OmitType(BaseEntity, ['updatedAt']) {
   @ApiProperty()
+  @Column()
   url: string;
 
-  @ApiProperty({ name: 'shorten_url' })
+  @ApiProperty()
+  @Column({ name: 'shorten_url' })
   shortenUrl: string;
 }

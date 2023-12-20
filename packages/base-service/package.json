@@ -2,8 +2,7 @@
   "name": "@shorten-url/base-service",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src",
   "scripts": {
     "lint": "eslint ./src/**/*.ts",
     "build": "tsc"
