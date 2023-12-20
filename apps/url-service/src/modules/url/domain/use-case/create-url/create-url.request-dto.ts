@@ -1,6 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { BaseRequestDto } from '@shorten-url/base-service';
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+  Min,
+} from 'class-validator';
 
 import { UserEntity } from '@/common/domain/entities/user.entity';
 
@@ -13,5 +19,6 @@ export class CreateUrlRequestDto extends BaseRequestDto {
 
   @ApiProperty()
   @IsNumber()
+  @Min(0)
   userId: UserEntity['id'];
 }

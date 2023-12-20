@@ -1,15 +1,20 @@
-import { ApiProperty, PickType } from '@nestjs/swagger';
-import { BaseEntity } from '@shorten-url/base-service';
-import { Column, Entity, OneToMany } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { UrlEntity } from '@/common/domain/entities/url.entity';
 
 @Entity('user')
-export class UserEntity extends PickType(BaseEntity, ['id']) {
+export class UserEntity {
+  @ApiProperty()
+  @PrimaryGeneratedColumn({ type: 'int', unsigned: true })
+  id: number;
+
   @ApiProperty()
   @Column({ unique: true })
   email: string;
 
-  @OneToMany(() => UrlEntity, (url) => url.user)
+  @OneToMany(() => UrlEntity, (url) => url.user, {
+    createForeignKeyConstraints: false,
+  })
   urls: UrlEntity[];
 }

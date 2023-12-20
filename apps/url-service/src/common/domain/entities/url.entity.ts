@@ -1,11 +1,12 @@
-import { ApiProperty, OmitType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { BaseEntity } from '@shorten-url/base-service';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { Column, Entity, Index, ManyToOne } from 'typeorm';
 
 import { UserEntity } from '@/common/domain/entities/user.entity';
 
 @Entity('url')
-export class UrlEntity extends OmitType(BaseEntity, ['updatedAt']) {
+export class UrlEntity extends BaseEntity {
   @ApiProperty()
   @Column()
   url: string;
@@ -15,9 +16,13 @@ export class UrlEntity extends OmitType(BaseEntity, ['updatedAt']) {
   shortenUrl: string;
 
   @ApiProperty()
-  @Column({ name: 'user_id' })
+  @Index()
+  @Column({ name: 'user_id', type: Number })
   userId: UserEntity['id'];
 
-  @ManyToOne(() => UserEntity, (user) => user.urls)
+  @Exclude()
+  @ManyToOne(() => UserEntity, (user) => user.urls, {
+    createForeignKeyConstraints: false,
+  })
   user: UserEntity;
 }

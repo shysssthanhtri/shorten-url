@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
 import { UrlEntity } from '@/common/domain/entities/url.entity';
@@ -16,6 +16,11 @@ export class CreateUrlInteractor implements CreateUrlUseCase {
 
   async handle(req: CreateUrlRequestDto): Promise<CreateUrlResponseDto> {
     return this.dataSource.transaction(async (manager) => {
+      const user = await this.urlRepository.findUserById(manager, req.userId);
+      if (!user) {
+        throw new NotFoundException('Not found user');
+      }
+
       const url = new UrlEntity();
       url.url = req.url;
       url.shortenUrl = req.url;
