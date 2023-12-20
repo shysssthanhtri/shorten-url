@@ -24,6 +24,8 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "nx": "^17.2.6",
     "prettier": "^2.3.2",
     "ts-jest": "29.0.3",
     "ts-loader": "^9.2.3",
