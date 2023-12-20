@@ -25,7 +25,7 @@ describe('[POST] /users', () => {
   });
 
   afterAll(async () => {
-    app.close();
+    await app.close();
   });
 
   describe('when user send invalid request', () => {
