@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    container_name: url_service_postgres
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=shyss
+      - POSTGRES_DB=url-service
+    volumes:
+      - ./db/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  db-test:
+    container_name: url_service_postgres_test
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=shyss
+      - POSTGRES_DB=url-service
+    volumes:
+      - ./db/pgdata-test:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
