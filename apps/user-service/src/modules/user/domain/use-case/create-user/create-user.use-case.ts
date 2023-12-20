@@ -1,4 +1,5 @@
-import { BaseUseCase } from '@/common/domain/use-case/base.use-case';
+import { BaseUseCase } from '@shorten-url/base-service';
+
 import { CreateUserRequestDto } from '@/modules/user/domain/use-case/create-user/create-user.request-dto';
 import { CreateUserResponseDto } from '@/modules/user/domain/use-case/create-user/create-user.response-dto';
 

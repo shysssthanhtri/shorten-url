@@ -1,6 +1,5 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
-  },
-  "nuxt.isNuxtApp": false
+    "source.fixAll": true
+  }
 }

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { BaseRequestDto } from '@shorten-url/base-service';
 import {
   IsEmail,
   IsNotEmpty,
@@ -6,8 +7,6 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-
-import { BaseRequestDto } from '@/common/domain/use-case/base.request-dto';
 
 export class CreateUserRequestDto extends BaseRequestDto {
   @IsNotEmpty()

@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { BaseResponseDto } from '@shorten-url/base-service';
 
 import { UserEntity } from '@/common/domain/entities/user.entity';
-import { BaseResponseDto } from '@/common/domain/use-case/base.response-dto';
 
 export class CreateUserResponseDto extends BaseResponseDto<UserEntity> {
   @ApiProperty()
