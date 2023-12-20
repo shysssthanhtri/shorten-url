@@ -2,7 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class Init1703056660031 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.startTransaction();
     await queryRunner.createTable(
       new Table({
         name: 'user',
@@ -62,13 +61,10 @@ export class Init1703056660031 implements MigrationInterface {
         ],
       }),
     );
-    await queryRunner.commitTransaction();
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.startTransaction();
     await queryRunner.dropTable('user');
     await queryRunner.dropTable('url');
-    await queryRunner.commitTransaction();
   }
 }
